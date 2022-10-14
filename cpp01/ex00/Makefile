@@ -1,11 +1,13 @@
 #SHELL = /bin/zsh
-NAME = Account
+NAME = Zombie
 
 CXX = clang++
 FLAGS = -Wall -Werror -Wextra -g3 -std=c++98 --pedantic
 
-SRCS =	tests.cpp	\
-		Account.cpp
+SRCS =	main.cpp		\
+		Zombie.cpp		\
+		newZombie.cpp	\
+		randomChump.cpp
 
 OBJS = $(SRCS:.cpp=.o)
 
