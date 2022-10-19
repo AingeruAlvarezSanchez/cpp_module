@@ -1,6 +1,6 @@
-#SHELL = /bin/bash
+#SHELL = /bin/zsh
 
-NAME = ReplaceText
+NAME = Replace
 
 CXX = clang++
 FLAGS = -Wall -Werror -Wextra -std=c++98 --pedantic
@@ -18,6 +18,7 @@ $(NAME): $(OBJS)
 
 clean:
 	$(RM) $(OBJS)
+	$(RM) *.replace
 
 fclean: clean
 	$(RM) $(NAME)
