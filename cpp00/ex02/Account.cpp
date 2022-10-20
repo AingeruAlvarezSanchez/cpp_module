@@ -1,6 +1,5 @@
 #include <iostream>
 #include <time.h>
-#include <ctime>
 #include "Account.hpp"
 
 int	Account::_nbAccounts = 0;
