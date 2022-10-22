@@ -3,7 +3,7 @@
 NAME = FixedPointClass
 
 CXX = clang++
-FLAGS = -Wall -Werror -Wextra -std=c++98 --pedantic
+FLAGS = -g -Wall -Werror -Wextra -std=c++98 --pedantic
 
 SRCS = main.cpp	\
        Fixed.cpp
