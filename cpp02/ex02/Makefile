@@ -1,6 +1,6 @@
 #SHELL = /bin/bash
 
-NAME = FixedPointClass
+NAME = FixedPointOverloads
 
 CXX = clang++
 FLAGS = -g -Wall -Werror -Wextra -std=c++98 --pedantic
