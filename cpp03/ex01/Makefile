@@ -1,12 +1,13 @@
 #SHELL = /bin/zsh
 
-NAME = Open
+NAME = ScavTrap
 
 CXX = clang++
-FLAGS = -Wall -Werror -Wextra -std=c++98 --pedantic
+FLAGS = -Wall -Werror -Wextra -std=c++98 --pedantic -Wno-shadow -Wshadow
 
-FILES = main.cpp	\
-		ClapTrap.cpp
+FILES = main.cpp		\
+		ClapTrap.cpp	\
+		ScavTrap.cpp
 
 OBJS = $(FILES:.cpp=.o)
 
@@ -18,7 +19,7 @@ $(NAME): $(OBJS)
 	$(CXX) $(FLAGS) $^ -o $(NAME)
 
 %.o: %.cpp
-	$(CXX) $(FLAGS) -c $< -o $(NAME)
+	$(CXX) $(FLAGS) -c $< -o $@
 
 clean:
 	$(RM) $(OBJS)

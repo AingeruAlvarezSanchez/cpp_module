@@ -1,9 +1,9 @@
-#ifndef DOCUMENTS_CLAPTRAP_HPP
-#define DOCUMENTS_CLAPTRAP_HPP
+#ifndef CLAPTRAP_HPP
+#define CLAPTRAP_HPP
 #include <iostream>
 
 class ClapTrap {
-private:
+protected:
 	std::string	_name;
 	uint32_t 	_hitpoints;
 	uint32_t 	_energyPoints;
@@ -17,7 +17,14 @@ public:
 	void		attack(std::string const &_target) const;
 	void		takeDamage(unsigned int _amount);
 	void		beRepaired(unsigned int _amount);
+	std::string	getName(void) const;
+	uint32_t	getHitpoints(void) const;
+	uint32_t	getEnergyPoints(void) const;
+	uint32_t	getAttackDamage(void) const;
+	void		setName(std::string _newName);
+	void		setHitpoints(uint32_t _newHitpoints);
+	void		setEnergyPoints(uint32_t _newEnergyPoints);
+	void		setAttackDamage(uint32_t _newAttackDamage);
 };
 
-
-#endif //DOCUMENTS_CLAPTRAP_HPP
+#endif //CLAPTRAP_HPP
