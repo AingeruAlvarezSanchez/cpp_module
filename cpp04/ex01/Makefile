@@ -1,6 +1,6 @@
 #SHELL = /bin/zsh
 
-NAME = Animal
+NAME = Brain
 
 CXX = clang++
 FLAGS = -Wall -Werror -Wextra -std=c++98 --pedantic -Wno-shadow -Wshadow
@@ -10,7 +10,8 @@ FILES = main.cpp			\
 		Dog.cpp				\
 		Cat.cpp				\
 		WrongAnimal.cpp		\
-		WrongCat.cpp
+		WrongCat.cpp		\
+		Brain.cpp
 
 OBJS = $(FILES:.cpp=.o)
 
