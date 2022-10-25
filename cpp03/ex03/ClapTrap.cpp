@@ -9,7 +9,7 @@ ClapTrap::ClapTrap(std::string _name) : _name(_name), _hitpoints(10), _energyPoi
 }
 
 ClapTrap::ClapTrap(unsigned int _hitpoints, unsigned int _attackDamage) : _hitpoints(_hitpoints), _energyPoints(10), _attackDamage(_attackDamage) {
-	std::cout << "Name constructor called to construct " << this->_name << std::endl;
+	std::cout << this->_name << " ClapTrap created" << std::endl;
 }
 
 ClapTrap::ClapTrap(const ClapTrap &_clapTrap) {

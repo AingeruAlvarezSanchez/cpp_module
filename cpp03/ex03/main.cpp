@@ -5,7 +5,7 @@
 
 int	main(void)
 {
-/*	ClapTrap	yoquin("yoquin");
+	ClapTrap	yoquin("yoquin");
 	ClapTrap	_undefined = ClapTrap();
 	ClapTrap	copyClap = ClapTrap(yoquin);
 	ScavTrap	solinis("solinis");
@@ -25,14 +25,14 @@ int	main(void)
 	yoquin.attack("toñete");
 	toñete.takeDamage(yoquin.getAttackDamage());
 	FragTrap	toñete2 = toñete;
-	toñete2.highFiveGuys();*/
+	toñete2.highFiveGuys();
 	DiamondTrap	diamondTrap("Mostro");
-	/*diamondTrap.guardGate();
+	diamondTrap.guardGate();
 	diamondTrap.highFiveGuys();
-	diamondTrap.attack("toñete");*/
+	diamondTrap.attack("toñete");
 	diamondTrap.beRepaired(diamondTrap.getEnergyPoints());
-	/*diamondTrap.whoAmI();
+	diamondTrap.whoAmI();
 	std::cout << "DiamondTrap tries to inmolate himself " << std::endl;
-	diamondTrap.takeDamage(diamondTrap.getHitpoints());*/
+	diamondTrap.takeDamage(diamondTrap.getHitpoints());
 	return (0);
 }
