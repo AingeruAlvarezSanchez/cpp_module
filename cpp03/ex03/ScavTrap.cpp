@@ -1,6 +1,6 @@
 #include "ScavTrap.hpp"
 
-ScavTrap::ScavTrap() {
+ScavTrap::ScavTrap() : ClapTrap(100, 20) {
 	this->setName("Undefined");
 	this->setHitpoints(100);
 	this->setEnergyPoints(50);
