@@ -8,10 +8,6 @@ ClapTrap::ClapTrap(std::string _name) : _name(_name), _hitpoints(10), _energyPoi
 	std::cout << this->_name << " ClapTrap created" << std::endl;
 }
 
-ClapTrap::ClapTrap(unsigned int _hitpoints, unsigned int _attackDamage) : _hitpoints(_hitpoints), _energyPoints(10), _attackDamage(_attackDamage) {
-	std::cout << this->_name << " ClapTrap created" << std::endl;
-}
-
 ClapTrap::ClapTrap(const ClapTrap &_clapTrap) {
 	*this = _clapTrap;
 }

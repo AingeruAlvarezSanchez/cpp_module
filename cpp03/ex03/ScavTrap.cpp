@@ -1,6 +1,6 @@
 #include "ScavTrap.hpp"
 
-ScavTrap::ScavTrap() : ClapTrap(100, 20) {
+ScavTrap::ScavTrap() {
 	this->setName("Undefined");
 	this->setHitpoints(100);
 	this->setEnergyPoints(50);
@@ -13,6 +13,13 @@ ScavTrap::ScavTrap(std::string _name) {
 	this->setHitpoints(100);
 	this->setEnergyPoints(50);
 	this->setAttackDamage(20);
+	std::cout << this->_name << " ScavTrap created" << std::endl;
+}
+
+ScavTrap::ScavTrap(uint32_t _attackDamage) {
+	this->setHitpoints(100);
+	this->setEnergyPoints(50);
+	this->setAttackDamage(_attackDamage);
 	std::cout << this->_name << " ScavTrap created" << std::endl;
 }
 

@@ -12,7 +12,6 @@ public:
 	ClapTrap();
 	ClapTrap(std::string _name);
 	ClapTrap(const ClapTrap &_clapTrap);
-	ClapTrap(unsigned int _hitpoints, unsigned int _attackDamage);
 	~ClapTrap();
 	ClapTrap	&operator=(const ClapTrap &_clapTrap);
 	void		attack(std::string const &_target) const;

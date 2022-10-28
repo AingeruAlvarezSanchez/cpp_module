@@ -1,6 +1,6 @@
 #include "DiamondTrap.hpp"
 
-DiamondTrap::DiamondTrap() {
+DiamondTrap::DiamondTrap() : ScavTrap(30) {
 	this->_name = "Undefined";
 	ClapTrap::setName("Undefined_clap_name");
 	this->setHitpoints(FragTrap::getHitpoints());
@@ -9,7 +9,7 @@ DiamondTrap::DiamondTrap() {
 	std::cout << this->_name << " DiamondTrap created" << std::endl;
 }
 
-DiamondTrap::DiamondTrap(std::string _name) {
+DiamondTrap::DiamondTrap(std::string _name) : ScavTrap(30) {
 	this->_name = _name;
 	ClapTrap::setName(_name + "_clap_name");
 	this->setHitpoints(FragTrap::getHitpoints());
