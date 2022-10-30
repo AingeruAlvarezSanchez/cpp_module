@@ -1,17 +1,17 @@
 #SHELL = /bin/zsh
 
-NAME = Brain
+NAME = Materias
 
 CXX = clang++
-FLAGS = -Wall -Werror -Wextra -std=c++98 --pedantic -Wno-shadow -Wshadow
 
-FILES = main.cpp			\
-		Animal.cpp			\
-		Dog.cpp				\
-		Cat.cpp				\
-		WrongAnimal.cpp		\
-		WrongCat.cpp		\
-		Brain.cpp
+FLAGS = -Wall -Werror -Wextra -std=c++98 --pedantic -Wno-shadow -Wshadow -g3
+
+FILES =	main.cpp		\
+		AMateria.cpp	\
+		Ice.cpp			\
+		Cure.cpp		\
+		Character.cpp	\
+		MateriaSource.cpp
 
 OBJS = $(FILES:.cpp=.o)
 
@@ -20,10 +20,10 @@ OBJS = $(FILES:.cpp=.o)
 all: $(NAME)
 
 $(NAME): $(OBJS)
-		$(CXX) $(FLAGS) $^ -o $(NAME)
+	$(CXX) $(FLAGS) $^ -o $@
 
 %.o: %.cpp
-		$(CXX) $(FLAGS) -c $< -o $@
+	$(CXX) $(FLAGS) -c $< -o $@
 
 clean:
 	$(RM) $(OBJS)

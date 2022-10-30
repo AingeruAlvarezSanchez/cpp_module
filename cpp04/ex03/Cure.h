@@ -1,16 +1,16 @@
-//
-// Created by Aingeru Alvarez sanchez on 10/25/22.
-//
+#ifndef CURE_H
+#define CURE_H
+#include "AMateria.h"
 
-#ifndef DOCUMENTS_CURE_H
-#define DOCUMENTS_CURE_H
-
-
-
-class Cure {
-
+class Cure : public AMateria {
+public:
+	Cure();
+	Cure(const Cure &_cure);
+	~Cure();
+	const Cure			&operator=(const Cure &_cure);
+	const std::string 	&getType() const;
+	AMateria			*clone() const;
+	void 				use(ICharacter &_target);
 };
 
-
-
-#endif //DOCUMENTS_CURE_H
+#endif //CURE_H

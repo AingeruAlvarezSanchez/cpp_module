@@ -1,16 +1,22 @@
-//
-// Created by Aingeru Alvarez sanchez on 10/25/22.
-//
+#ifndef AMATERIA_H
+#define AMATERIA_H
+#include <iostream>
+#include "ICharacter.h"
 
-#ifndef DOCUMENTS_AMATERIA_H
-#define DOCUMENTS_AMATERIA_H
-
-
+class	ICharacter;
 
 class AMateria {
-
+protected:
+	std::string _type;
+public:
+	AMateria();
+	AMateria(const AMateria &_materia);
+	AMateria(const std::string &_type);
+	virtual ~AMateria();
+	const AMateria		&operator=(const AMateria &_materia);
+	const std::string	&getType() const;
+	virtual AMateria	*clone() const = 0;
+	virtual void 		use(ICharacter &_target);
 };
 
-
-
-#endif //DOCUMENTS_AMATERIA_H
+#endif //AMATERIA_H

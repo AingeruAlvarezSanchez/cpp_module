@@ -5,7 +5,7 @@ WrongCat::WrongCat() {
 }
 
 WrongCat::WrongCat(const WrongCat &_wrongCat) {
-	*this = _wrongCat;
+	this->_type = _wrongCat.getType();
 }
 
 WrongCat::~WrongCat() {}

@@ -3,7 +3,8 @@
 Brain::Brain() {}
 
 Brain::Brain(const Brain &_brain) {
-	*this = _brain;
+	for (size_t indexOfIdeas = 0; indexOfIdeas < 100; indexOfIdeas++)
+		this->_ideas[indexOfIdeas] = _brain._ideas[indexOfIdeas];
 }
 
 Brain::~Brain() {}

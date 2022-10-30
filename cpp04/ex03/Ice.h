@@ -1,16 +1,16 @@
-//
-// Created by Aingeru Alvarez sanchez on 10/25/22.
-//
+#ifndef ICE_H
+#define ICE_H
+#include "AMateria.h"
 
-#ifndef DOCUMENTS_ICE_H
-#define DOCUMENTS_ICE_H
-
-
-
-class Ice {
-
+class Ice : public AMateria {
+public:
+	Ice();
+	Ice(const Ice &_ice);
+	~Ice();
+	const Ice			&operator=(const Ice &_ice);
+	const std::string 	&getType() const;
+	AMateria			*clone() const;
+	void 				use(ICharacter &_target);
 };
 
-
-
-#endif //DOCUMENTS_ICE_H
+#endif //ICE_H

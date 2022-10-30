@@ -5,7 +5,7 @@ Animal::Animal() {
 }
 
 Animal::Animal(const Animal &_animal) {
-	*this = _animal;
+	this->_type = _animal.getType();
 }
 
 Animal::~Animal() {}

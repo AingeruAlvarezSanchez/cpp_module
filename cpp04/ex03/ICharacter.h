@@ -1,16 +1,16 @@
-//
-// Created by Aingeru Alvarez sanchez on 10/25/22.
-//
+#ifndef ICHARACTER_H
+#define ICHARACTER_H
+#include "AMateria.h"
 
-#ifndef DOCUMENTS_ICHARACTER_H
-#define DOCUMENTS_ICHARACTER_H
-
-
+class	AMateria;
 
 class ICharacter {
-
+public:
+	virtual ~ICharacter() {};
+	virtual const std::string	&getName() const = 0;
+	virtual void				equip(AMateria *_materia) = 0;
+	virtual void 				unequip(int _indexOfMateria) = 0;
+	virtual void 				use(int _indexOfMateria, ICharacter &_target) = 0;
 };
 
-
-
-#endif //DOCUMENTS_ICHARACTER_H
+#endif //ICHARACTER_H

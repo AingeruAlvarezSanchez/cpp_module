@@ -6,7 +6,8 @@ Cat::Cat() {
 }
 
 Cat::Cat(const Cat &_cat) {
-	*this = _cat;
+	this->_type = _cat.getType();
+	this->_brain = new Brain(*_cat._brain);
 }
 
 Cat::~Cat() {
@@ -15,7 +16,7 @@ Cat::~Cat() {
 
 const Cat &Cat::operator=(const Cat &_cat) {
 	this->_type = _cat.getType();
-	this->_brain = _cat._brain;
+	this->_brain = new Brain(*_cat._brain);
 	return (*this);
 }
 

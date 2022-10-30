@@ -6,7 +6,8 @@ Dog::Dog() {
 }
 
 Dog::Dog(const Dog &_dog) {
-	*this = _dog;
+	this->_type = _dog.getType();
+	this->_brain = new Brain(*_dog._brain);
 }
 
 Dog::~Dog() {
@@ -15,7 +16,7 @@ Dog::~Dog() {
 
 const Dog &Dog::operator=(const Dog &_dog) {
 	this->_type = _dog.getType();
-	this->_brain = _dog._brain;
+	this->_brain = new Brain(*_dog._brain);
 	return (*this);
 }
 

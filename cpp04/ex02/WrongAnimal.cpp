@@ -5,7 +5,7 @@ WrongAnimal::WrongAnimal() {
 }
 
 WrongAnimal::WrongAnimal(const WrongAnimal &_wrongAnimal) {
-	*this = _wrongAnimal;
+	this->_type = _wrongAnimal.getType();
 }
 
 WrongAnimal::~WrongAnimal() {}
