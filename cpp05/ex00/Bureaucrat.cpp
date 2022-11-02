@@ -1,8 +1,13 @@
-#include "Bureaucrat.h"
+#include "Bureaucrat.hpp"
 
 Bureaucrat::Bureaucrat() : _name("Undefined"), _grade(150) {}
 
-Bureaucrat::Bureaucrat(std::string _name, uint16_t _grade) : _name(_name), _grade(_grade) {}
+Bureaucrat::Bureaucrat(std::string _name, uint16_t _grade) : _name(_name), _grade(_grade) {
+	if (_grade < 1)
+		throw BureaucratHighException();
+	if (_grade > 150)
+		throw BureaucratLowException();
+}
 
 Bureaucrat::Bureaucrat(const Bureaucrat &_bureaucrat) : _name(_bureaucrat.getName()), _grade(_bureaucrat.getGrade()) {}
 
@@ -27,25 +32,13 @@ uint16_t	Bureaucrat::getGrade() const {
 }
 
 void Bureaucrat::GradeIncrement() {
-	try {
-		if ((this->getGrade() - 1) < 1)
-			throw	BureaucratHighException();
-	}
-	catch (BureaucratHighException &_exception) {
-		std::cout << "Error, grade too High" << std::endl;
-		return ;
-	}
+	if ((this->getGrade() - 1) < 1)
+		throw	BureaucratHighException();
 	this->_grade--;
 }
 
 void Bureaucrat::GradeDecrement() {
-	try {
-		if ((this->getGrade() + 1) > 150)
-			throw	BureaucratLowException();
-	}
-	catch (BureaucratLowException &_exception) {
-		std::cout << "Error, grade too low" << std::endl;
-		return ;
-	}
+	if ((this->getGrade() + 1) > 150)
+		throw	BureaucratLowException();
 	this->_grade++;
 }

@@ -20,15 +20,15 @@ public:
 
 	class BureaucratLowException : public std::exception {
 	public:
-		virtual const char	*what() const throw() {
-			return (NULL);
+		const char	*what() const throw() {
+			return ("Grade too low");
 		}
 	};
 
 	class BureaucratHighException : public std::exception {
 	public:
-		virtual const char	*what() const throw() {
-			return (NULL);
+		const char	*what() const throw() {
+			return ("Grade too high");
 		}
 	};
 };
