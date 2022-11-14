@@ -21,6 +21,7 @@ public:
 	void				GradeIncrement(void);
 	void				GradeDecrement(void);
 	void				signForm(Form &_form);
+	void 				executeForm(const Form &_form);
 
 	class BureaucratLowException : public std::exception {
 	public:

@@ -14,13 +14,14 @@ public:
 	Form();
 	Form(std::string _name, uint16_t _signationGrade, uint16_t _executionGrade);
 	Form(const Form &_form);
-	~Form();
+	virtual	~Form();
 	const Form	&operator=(const Form &_form);
 	const std::string	getName(void) const;
 	bool				getSigned(void) const;
 	uint16_t			getSignationGrade(void) const;
 	uint16_t			getExecutionGrade(void) const;
 	void				beSigned(Bureaucrat &_bureaucrat);
+	virtual void		execute(const Bureaucrat &_executor) const = 0;
 
 	class FormTooLowException : public std::exception {
 	public:
@@ -33,6 +34,13 @@ public:
 	public:
 		const char *what() const throw() {
 			return ("Grade too High");
+		}
+	};
+
+	class FormNotSignedException : public std::exception {
+	public:
+		const char *what() const throw() {
+			return ("Form not signed");
 		}
 	};
 };

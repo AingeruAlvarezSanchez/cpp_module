@@ -6,9 +6,12 @@ CXX = clang++
 
 FLAGS = -Wall -Werror -Wextra -std=c++98 --pedantic -Wno-shadow -Wshadow
 
-FILES = main.cpp		\
-		Bureaucrat.cpp	\
-		Form.cpp
+FILES = main.cpp					\
+		Bureaucrat.cpp				\
+		Form.cpp					\
+		ShrubberyCreationForm.cpp	\
+		RobotomyRequestForm.cpp		\
+		PresidentialPardonForm.cpp
 
 OBJS = $(FILES:.cpp=.o)
 
@@ -24,6 +27,7 @@ $(NAME): $(OBJS)
 
 clean:
 	$(RM) $(OBJS)
+	$(RM) *_shrubbery
 
 fclean: clean
 	$(RM) $(NAME)
