@@ -45,7 +45,11 @@ void Bureaucrat::GradeDecrement() {
 
 void Bureaucrat::signForm(Form &_form) {
 	try {
-		_form.beSigned(*this);
+		if (&_form == (void *)0x0) {
+			std::cout << "Form does not exist" << std::endl;
+			return;
+		} else
+			_form.beSigned(*this);
 	}
 	catch (std::exception &_exception) {
 		std::cout << "Bureaucrat " << this->getName() << " cannot sign " << _form.getName() << " because " << _exception.what() << std::endl;
@@ -56,7 +60,12 @@ void Bureaucrat::signForm(Form &_form) {
 
 void Bureaucrat::executeForm(const Form &_form) {
 	try {
-		_form.execute(*this);
+		if (&_form == (void *)0x0) {
+			std::cout << "Form does not exist" << std::endl;
+			return ;
+		}
+		else
+			_form.execute(*this);
 	}
 	catch (std::exception &_exception) {
 		std::cout << "Bureaucrat " << this->getName() << " cannot execute " << _form.getName() << " because " << _exception.what() << std::endl;
