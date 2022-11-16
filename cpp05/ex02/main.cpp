@@ -40,6 +40,8 @@ int main(void)
 		darwin.GradeIncrement();
 		std::cout << darwin << std::endl;
 		delete shrubbery;
+		delete robotomy;
+		delete presidential;
 	}
 	catch (std::exception &_exception) {
 		std::cout << _exception.what() << std::endl;
