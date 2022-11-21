@@ -5,6 +5,11 @@
 class Base;
 
 class C : public Base {
+public:
+	C();
+	C(const C &_c);
+	~C();
+	const C &operator=(const C &_c);
 };
 
 #endif //C_HPP

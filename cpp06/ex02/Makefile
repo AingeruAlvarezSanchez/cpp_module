@@ -8,7 +8,9 @@ FLAGS = -Wall -Werror -Wextra -std=c++98 -Wno-shadow -Wshadow
 
 FILES = main.cpp	\
 		Base.cpp	\
-		A.cpp
+		A.cpp		\
+		B.cpp		\
+		C.cpp
 
 OBJS = $(FILES:.cpp=.o)
 
