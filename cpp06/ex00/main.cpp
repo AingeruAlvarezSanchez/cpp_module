@@ -4,7 +4,6 @@ int main(int argc, char **argv)
 {
 	if (argc != 2)
 		return (std::cout << "Error: Incorrect number of arguments, you must give one argument" << std::endl, 1);
-
 	char	characterInterpretation;
 	if (strlen(argv[1]) == 1)
 	{
@@ -27,7 +26,10 @@ int main(int argc, char **argv)
 			std::cout << "char: Non displayable" << std::endl;
 	}
 	int		integerInterpretation;
-	integerInterpretation = static_cast<int>(atoi(argv[1]));
+	if (strlen(argv[1]) == 1 && std::isalpha(argv[1][0]))
+		integerInterpretation = static_cast<int>(argv[1][0]);
+	else
+		integerInterpretation = static_cast<int>(atoi(argv[1]));
 	if (!integerInterpretation && (argv[1][0] != '0' && argv[1][0] != '-'))
 		std::cout << "int: impossible" << std::endl;
 	else
