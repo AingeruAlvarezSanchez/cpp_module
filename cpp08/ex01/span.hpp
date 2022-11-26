@@ -14,8 +14,9 @@ public:
 	~Span();
 	const Span	&operator=(const Span &_copy);
 	void		addNumber(unsigned int _newNumber);
-	int			shortestSpan(void) const;
+	int			shortestSpan(void);
 	int			longestSpan(void) const;
+	void		generateNewVector(unsigned int _numberOfElements);
 };
 
 #endif //SPAN_HPP
