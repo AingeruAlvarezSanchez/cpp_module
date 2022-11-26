@@ -39,7 +39,7 @@ void	Span::addNumber(unsigned int _newNumber) {
 	this->_vectorOfIntegers.push_back(_newNumber);
 }
 
-int	Span::shortestSpan(void)  {
+int	Span::shortestSpan(void) const {
 	std::vector<int>	vectorCopy = this->_vectorOfIntegers;
 	sort(vectorCopy.begin(), vectorCopy.end());
 	std::vector<int>::iterator	secondLowest = vectorCopy.begin() + 1;
