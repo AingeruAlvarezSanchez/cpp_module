@@ -1,6 +1,4 @@
 #include "span.hpp"
-#include <stdexcept>
-#include <algorithm>
 
 Span::Span() : _vectorOfIntegers(0), _numberOfElements(0) {}
 
@@ -23,7 +21,7 @@ Span::~Span() {}
 
 const Span	&Span::operator=(const Span &_copy) {
 	this->_numberOfElements = _copy._numberOfElements;
-	this->_vectorOfIntegers.reserve(_numberOfElements); 
+	this->_vectorOfIntegers.reserve(_numberOfElements);
 	std::vector<int> newVector = _copy._vectorOfIntegers;
 	std::vector<int>::iterator	iterator = newVector.begin();
 	while (iterator != _copy._vectorOfIntegers.end()) {
