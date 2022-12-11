@@ -5,8 +5,8 @@ int main()
 {
   try
   {
-    Span sp2;
     Span sp = Span(5);
+    Span sp2;
     sp.addNumber(5);
     sp.addNumber(3);
     sp.addNumber(17);
@@ -18,6 +18,9 @@ int main()
     sp2.generateNewVector(10000);
     std::cout << sp2.shortestSpan() << std::endl;
     std::cout << sp2.longestSpan() << std::endl;
+
+    Span spFailed;
+    spFailed.generateNewVector(1);
   }
   catch(const std::exception& e)
   {

@@ -3,7 +3,9 @@
 Span::Span() : _vectorOfIntegers(0), _numberOfElements(0) {}
 
 Span::Span(unsigned int _numberOfElements) : _numberOfElements(_numberOfElements) {
-	this->_vectorOfIntegers.reserve(10000);
+	this->_vectorOfIntegers.reserve(_numberOfElements);
+	if (_numberOfElements < 1)
+		throw   std::range_error("Vector is not valid");
 }
 
 Span::Span(const Span &_copy) {
