@@ -87,13 +87,13 @@ bool	input_file_health_check(const char* file_name, std::ifstream& input_file) {
 	return false;
 }
 
-BitcoinExchange* database_creation(const char* database_file_name) {
-	BitcoinExchange	*btc_exchanger = new BitcoinExchange();
+BitcoinExchange database_creation(const char* database_file_name) {
+	BitcoinExchange	btc_exchanger;
 
 	if (database_file_name) {
-		btc_exchanger->CreateDatabase(database_file_name);
+		btc_exchanger.CreateDatabase(database_file_name);
 	} else {
-		btc_exchanger->CreateDatabase("data.csv");
+		btc_exchanger.CreateDatabase("data.csv");
 	}
 	return	btc_exchanger;
 }
@@ -106,7 +106,7 @@ void	display_btc_value(const char* file_name, const char* database_file_name) {
 		throw	std::invalid_argument("could not open file.");
 	}
 
-	BitcoinExchange	*btc_exchanger = database_creation(database_file_name);
+	BitcoinExchange	btc_exchanger = database_creation(database_file_name);
 	std::string 	line;
 	std::string 	date;
 	double			value;
@@ -120,23 +120,22 @@ void	display_btc_value(const char* file_name, const char* database_file_name) {
 	format_checker.close();
 
 	while (std::getline(input_file, line)) {
-		if (parse_date(line, date, *btc_exchanger)
+		if (parse_date(line, date, btc_exchanger)
 			|| parse_value(line, value)) {
 			continue ;
 		}
 		std::cout << date << " => " << value << " = ";
 
-		std::string	lower_date = ((--btc_exchanger->GetDatabase().lower_bound(date))->first);
-		std::string	upper_date = btc_exchanger->GetDatabase().lower_bound(date)->first;
+		std::string	lower_date = ((--btc_exchanger.GetDatabase().lower_bound(date))->first);
+		std::string	upper_date = btc_exchanger.GetDatabase().lower_bound(date)->first;
 
 		if (get_closest_date(date, lower_date, upper_date)) {
-			std::cout << std::setprecision(2) << (btc_exchanger->GetDatabase().lower_bound(date)->second * value) << "\n";
+			std::cout << std::setprecision(2) << (btc_exchanger.GetDatabase().lower_bound(date)->second * value) << "\n";
 		} else {
-			std::cout << std::setprecision(2) << ((--btc_exchanger->GetDatabase().lower_bound(date))->second * value) << "\n";
+			std::cout << std::setprecision(2) << ((--btc_exchanger.GetDatabase().lower_bound(date))->second * value) << "\n";
 		}
 	}
 	input_file.close();
-	delete	btc_exchanger;
 }
 
 int	main(__attribute__((unused)) int argc, char **argv) {
