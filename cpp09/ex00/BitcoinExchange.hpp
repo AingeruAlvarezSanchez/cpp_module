@@ -14,10 +14,10 @@ private:
 public:
 	//Constructors
 	BitcoinExchange();
-	BitcoinExchange(const BitcoinExchange& cpy); //TODO
+	BitcoinExchange(const BitcoinExchange& cpy);
 
 	//operator= Overload
-	BitcoinExchange&	operator=(const BitcoinExchange& cpy); //TODO
+	BitcoinExchange&	operator=(const BitcoinExchange& cpy);
 
 	//Database manipulation
 	void	CreateDatabase(const char *database_name);

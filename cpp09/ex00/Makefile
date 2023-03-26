@@ -8,6 +8,7 @@ FILES = main.cpp \
 OBJS = $(FILES:.cpp=.o)
 
 $(NAME): all
+	echo "Use:\n	- ./btc \"database_file\"\n	- ex: ./btc \"database.csv\""
 
 all: main.o BitcoinExchange.o
 	$(CXX) $(CXXFLAGS) $^ -o $(NAME)
@@ -21,6 +22,6 @@ clean:
 fclean: clean
 	$(RM) $(NAME)
 
-re: fclean all
+re: fclean $(NAME)
 
 .PHONY: clean fclean re

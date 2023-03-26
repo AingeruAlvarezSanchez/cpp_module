@@ -2,12 +2,11 @@
 #include <iostream>
 #include <cstdlib>
 #include <iomanip>
-//TODO is not needed?? #include <ctime>
 
 //Error handling
 #define EBADINPUT 1
 
-bool	parse_date(const std::string& line, std::string& date, const BitcoinExchange& btc_exchanger) {
+bool	parse_date(const std::string& line, std::string& date) {
 	if (line.find('|') == std::string::npos || line.find('|') != BitcoinExchange::date_width) {
 		std::cout << "Error: bad input => " << line << "\n";
 		errno = EBADINPUT;
@@ -15,17 +14,20 @@ bool	parse_date(const std::string& line, std::string& date, const BitcoinExchang
 	}
 	date = line.substr(0, (line.find('|') - 1));
 
-	unsigned short year_numeric_value;
+    struct tm s_date = {};
+    if (strptime(date.c_str(), "%Y-%m-%d", &s_date) == NULL) {
+        std::cout << "Error: bad input => " << line << "\n";
+        errno = EBADINPUT;
+        return true;
+    }
+
 	unsigned short month_numeric_value;
 	unsigned short day_numeric_value;
 
-	year_numeric_value = std::strtol(date.substr(0, 4).c_str(), NULL, 10);
 	month_numeric_value = std::strtol(date.substr(5, 2).c_str(), NULL, 10);
 	day_numeric_value = std::strtol(date.substr(8, 2).c_str(), NULL, 10);
 
-	if ((year_numeric_value < btc_exchanger.min_year || year_numeric_value > btc_exchanger.max_year)
-		|| (month_numeric_value < 1 || month_numeric_value > 12)
-		|| (day_numeric_value < 1 || day_numeric_value > 31)) {
+	if (month_numeric_value == 2 && day_numeric_value > 29) {
 		std::cout << "Error: bad input => " << line << "\n";
 		errno = EBADINPUT;
 		return true;
@@ -51,7 +53,6 @@ bool	parse_value(const std::string& line, double& value) {
 bool	has_header(const std::string& first_line) {
 	if (first_line.substr().substr(0, 4) != "date"
 		|| first_line.substr().substr(7, 5) != "value") {
-		//TODO maybe display a warning for not getting the same error msg as values??
 		return false;
 	}
 	return true;
@@ -120,7 +121,7 @@ void	display_btc_value(const char* file_name, const char* database_file_name) {
 	format_checker.close();
 
 	while (std::getline(input_file, line)) {
-		if (parse_date(line, date, btc_exchanger)
+		if (parse_date(line, date)
 			|| parse_value(line, value)) {
 			continue ;
 		}
@@ -130,9 +131,9 @@ void	display_btc_value(const char* file_name, const char* database_file_name) {
 		std::string	upper_date = btc_exchanger.GetDatabase().lower_bound(date)->first;
 
 		if (get_closest_date(date, lower_date, upper_date)) {
-			std::cout << std::setprecision(2) << (btc_exchanger.GetDatabase().lower_bound(date)->second * value) << "\n";
+			std::cout << std::fixed << std::setprecision(2) << (btc_exchanger.GetDatabase().lower_bound(date)->second * value) << "\n";
 		} else {
-			std::cout << std::setprecision(2) << ((--btc_exchanger.GetDatabase().lower_bound(date))->second * value) << "\n";
+			std::cout << std::fixed << std::setprecision(2) << ((--btc_exchanger.GetDatabase().lower_bound(date))->second * value) << "\n";
 		}
 	}
 	input_file.close();

@@ -7,18 +7,15 @@ BitcoinExchange::BitcoinExchange(const BitcoinExchange& cpy) {
 	this->_database = cpy._database;
 	this->max_year = cpy.max_year;
 	this->max_year = cpy.min_year;
-	//TODO this->_input_file = cpy._input_file; //we cannot copy files of std::ifstream type, check this
 }
 
 BitcoinExchange& BitcoinExchange::operator=(const BitcoinExchange &cpy) {
 	this->_database = cpy._database;
 	this->max_year = cpy.max_year;
 	this->max_year = cpy.min_year;
-	//TODO this->_input_file = cpy._input_file; //we cannot copy files of std::ifstream type, check this
 	return *this;
 }
 
-//When an ill formed database or a non csv format file is provided, behaviour is undefined
 void BitcoinExchange::CreateDatabase(const char *database_name) {
 	std::ifstream	database_file(database_name);
 
@@ -28,7 +25,7 @@ void BitcoinExchange::CreateDatabase(const char *database_name) {
 
 	std::string	line;
 	std::string	date;
-	double		value;
+	double value;
 
 	std::getline(database_file, line);
 	while (std::getline(database_file, date, ',')) {
