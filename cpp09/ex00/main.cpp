@@ -5,6 +5,7 @@
 
 //Error handling
 #define EBADINPUT 1
+//TODO clean, put functions inside BitcoinExchange class
 
 bool	parse_date(const std::string& line, std::string& date) {
 	if (line.find('|') == std::string::npos || line.find('|') != BitcoinExchange::date_width) {

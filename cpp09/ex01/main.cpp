@@ -1,6 +1,9 @@
 #include <iostream>
 #include "RPN.hpp"
 
+//Error handling
+#define EBADINPUT 1
+
 int main(int argc, char **argv) {
     if (argc == 2) {
         try {
@@ -9,12 +12,12 @@ int main(int argc, char **argv) {
         }
         catch (const std::exception& e) {
             std::cout << "Error\n";
-            errno = 1;
+            errno = EBADINPUT;
             return 1;
         }
     } else {
         std::cout << "Error\n";
-        errno = 1;
+        errno = EBADINPUT;
         return  1;
     }
     return  0;
