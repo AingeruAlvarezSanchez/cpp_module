@@ -59,20 +59,17 @@ bool	has_header(const std::string& first_line) {
 	return true;
 }
 
-bool	get_closest_date(const std::string& str_date, const std::string& str_lower_date, const std::string& str_upper_date) {
-	struct tm date = {}, lower_date = {}, upper_date = {};
+bool	get_closest_date(const std::string& str_date, const std::string& str_upper_date) {
+	struct tm date = {}, upper_date = {};
 
 	strptime(str_date.c_str(), "%Y-%m-%d", &date);
-	strptime(str_lower_date.c_str(), "%Y-%m-%d", &lower_date);
 	strptime(str_upper_date.c_str(), "%Y-%m-%d", &upper_date);
 
 	time_t	t_date = mktime(&date);
-	time_t	t_lower_date = mktime(&lower_date);
 	time_t	t_upper_date = mktime(&upper_date);
-	double lower_date_tdiff = difftime(t_date, t_lower_date);
 	double upper_date_tdiff = difftime(t_upper_date, t_date);
 
-	if (lower_date_tdiff > upper_date_tdiff)
+	if (upper_date_tdiff == 0.00)
 		return true;
 	return false;
 }
@@ -128,10 +125,9 @@ void	display_btc_value(const char* file_name, const char* database_file_name) {
 		}
 		std::cout << date << " => " << value << " = ";
 
-		std::string	lower_date = ((--btc_exchanger.GetDatabase().lower_bound(date))->first);
 		std::string	upper_date = btc_exchanger.GetDatabase().lower_bound(date)->first;
 
-		if (get_closest_date(date, lower_date, upper_date)) {
+		if (get_closest_date(date, upper_date)) {
 			std::cout << std::fixed << std::setprecision(2) << (btc_exchanger.GetDatabase().lower_bound(date)->second * value) << "\n";
 		} else {
 			std::cout << std::fixed << std::setprecision(2) << ((--btc_exchanger.GetDatabase().lower_bound(date))->second * value) << "\n";

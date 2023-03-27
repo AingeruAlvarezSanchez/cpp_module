@@ -6,7 +6,7 @@
 #include <stdexcept>
 #include <iostream>
 
-RPN::RPN() {}
+RPN::RPN() : _operationStack() {}
 
 RPN::RPN(const RPN &cpy) : _operationStack(cpy._operationStack) {}
 
