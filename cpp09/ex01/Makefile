@@ -1,20 +1,19 @@
+#SHELL = /bin/zsh
+
 NAME = RPN
 
-FILES = main.cpp \
+FLAGS = -Wall -Werror -Wextra -std=c++98 -pedantic
+
+FILES = main.cpp			\
 		RPN.cpp
 
-CXXFLAGS = -Wall -Werror -Wextra -std=c++98 -pedantic -fsanitize=address -g3
+all: $(NAME)
 
-.SILENT:
-
-$(NAME): all
-	echo "Use:\n	- ./RPN \"arguments\"\n	- ex: ./RPN \"1 2 + 3 4 - 5 6 * 7 8 /\""
-
-all: main.o RPN.o
-	$(CXX) $(CXXFLAGS) $^ -o $(NAME)
+$(NAME): main.o RPN.o
+		$(CXX) $(FLAGS) $^ -o $(NAME)
 
 %.o: %.cpp
-	$(CXX) $(CXXFLAGS) -c $< -o $@
+		$(CXX) $(FLAGS) -c $< -o $@
 
 clean:
 	$(RM) main.o RPN.o
@@ -22,6 +21,7 @@ clean:
 fclean: clean
 	$(RM) $(NAME)
 
-re: fclean $(NAME)
+re: fclean all
 
 .PHONY: all clean fclean re
+

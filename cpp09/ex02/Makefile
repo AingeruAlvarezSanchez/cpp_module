@@ -1,27 +1,27 @@
+#SHELL = /bin/zsh
+
 NAME = PmergeMe
 
-CXXFLAGS = -Wall -Werror -Wextra -std=c++98 -pedantic -fsanitize=address -g3
+FLAGS = -Wall -Werror -Wextra -std=c++98 -pedantic
 
-FILES = main.cpp \
+FILES = main.cpp			\
 		PmergeMe.cpp
 
-OBJS = $(FILES:.cpp=.o)
+all: $(NAME)
 
-$(NAME): all
-	echo "Use:\n	- ./PmergeMe \arg1 arg2 arg3 ...\n	- ex: ./PmergeMe 3 1 2 ..."
-
-all: main.o PmergeMe.o
-	$(CXX) $(CXXFLAGS) $^ -o $(NAME)
+$(NAME): main.o PmergeMe.o
+		$(CXX) $(FLAGS) $^ -o $(NAME)
 
 %.o: %.cpp
-	$(CXX) $(CXXFLAGS) -c $< -o $@
+		$(CXX) $(FLAGS) -c $< -o $@
 
 clean:
-	$(RM) $(OBJS)
+	$(RM) main.o PmergeMe.o
 
 fclean: clean
 	$(RM) $(NAME)
 
-re: fclean $(NAME)
+re: fclean all
 
-.PHONY: clean fclean re
+.PHONY: all clean fclean re
+

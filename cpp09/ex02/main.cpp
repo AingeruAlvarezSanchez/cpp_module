@@ -40,7 +40,6 @@ int main(int argc, char **argv) {
             time = (end.tv_sec - begin.tv_sec) + (end.tv_usec - begin.tv_usec) / 1000000.0;
 
             std::cout << "Time to process a range of " << argc - 1 << " elements with std::deque  : " << time << " us\n";
-
         }
         catch (const std::exception& e) {
             std::cout << "Error: " << e.what() << "\n";
@@ -51,5 +50,6 @@ int main(int argc, char **argv) {
         std::cout << "Error: Invalid number of arguments\n";
         return  1;
     }
+
     return  0;
 }

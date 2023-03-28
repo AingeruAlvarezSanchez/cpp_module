@@ -55,6 +55,9 @@ int RPN::performRpnOperation(const std::string &input) {
             }
         }
     }
+    if (this->_operationStack.size() > 1) {
+        throw   std::invalid_argument("");
+    }
     return  this->_operationStack.top();
 }
 
