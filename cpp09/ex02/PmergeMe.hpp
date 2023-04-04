@@ -41,7 +41,7 @@ public:
             if (*first > *last) {
                 std::iter_swap(first, last);
             }
-        } else if (last - first <= 4) {
+        } else if (last - first <= 16) {
             insertSort(first, last + 1);
         } else {
                 Iterator    middle = first + ((last - first) / 2);

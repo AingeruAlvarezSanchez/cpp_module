@@ -36,7 +36,7 @@ bool	parse_date(const std::string& line, std::string& date) {
 }
 
 bool	parse_value(const std::string& line, double& value) {
-	value = std::strtof(line.substr(line.find('|') + 1, line.find("\n\0")).c_str(), NULL);
+	value = std::strtod(line.substr(line.find('|') + 1, line.find("\n\0")).c_str(), NULL);
 
 	if (value <= 0) {
 		std::cout << "Error: not a positive number." << "\n";
@@ -135,7 +135,7 @@ void	display_btc_value(const char* file_name, const char* database_file_name) {
 	input_file.close();
 }
 
-int	main(__attribute__((unused)) int argc, char **argv) {
+int	main(int, char **argv) {
 	try {
 		display_btc_value(argv[1], argv[2]);
 	}
